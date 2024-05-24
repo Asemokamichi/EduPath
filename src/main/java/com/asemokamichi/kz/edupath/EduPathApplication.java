@@ -1,4 +1,4 @@
-package com.aemokamichi.kz.edupath;
+package com.asemokamichi.kz.edupath;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
