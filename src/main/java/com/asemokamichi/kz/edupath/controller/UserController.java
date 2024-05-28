@@ -28,9 +28,9 @@ public class UserController {
     public ResponseEntity<?> getUser(@PathVariable Long id) {
         User user = userService.findById(id);
 
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь не найден...");
-        }
+//        if (user == null) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь не найден...");
+//        }
 
         return ResponseEntity.ok(new UserDTO(user));
     }
@@ -39,9 +39,9 @@ public class UserController {
     public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
         User user = userService.updateUser(id, userDTO);
 
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь не найден...");
-        }
+//        if (user == null) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь не найден...");
+//        }
 
         return ResponseEntity.ok(new UserDTO(user));
     }
@@ -50,9 +50,9 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         User user = userService.findById(id);
 
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь не найден...");
-        }
+//        if (user == null) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь не найден...");
+//        }
 
         userService.deleteUser(user);
 

@@ -19,7 +19,7 @@ public class ProgressController {
     public ResponseEntity<?> createProgress(@RequestBody ProgressDTO progressDTO){
         Progress progress = progressService.createProgress(progressDTO);
 
-        if (progress == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь с таким именем уже существует");
+//        if (progress == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь с таким именем уже существует");
 
         return ResponseEntity.ok(new ProgressDTO(progress));
     }
@@ -28,7 +28,7 @@ public class ProgressController {
     public ResponseEntity<?> getProgress(@PathVariable Long id){
         Progress progress = progressService.findById(id);
 
-        if (progress == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь с таким именем уже существует");
+//        if (progress == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь с таким именем уже существует");
 
         return ResponseEntity.ok(new ProgressDTO(progress));
     }
@@ -37,7 +37,7 @@ public class ProgressController {
     public ResponseEntity<?> deleteProgress(@PathVariable Long id){
         Progress progress = progressService.findById(id);
 
-        if (progress == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь с таким именем уже существует");
+//        if (progress == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь с таким именем уже существует");
 
         progressService.deleteProgress(progress);
 

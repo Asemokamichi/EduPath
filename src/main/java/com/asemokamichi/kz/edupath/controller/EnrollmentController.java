@@ -20,7 +20,7 @@ public class EnrollmentController {
     public ResponseEntity<?> createEnrollment(@RequestBody EnrollmentDTO enrollmentDTO){
         Enrollment enrollment = enrollmentService.createEnrollment(enrollmentDTO);
 
-        if (enrollment == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь или Курс не найден...");
+//        if (enrollment == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь или Курс не найден...");
 
         return ResponseEntity.ok(new EnrollmentDTO(enrollment));
     }
@@ -29,7 +29,7 @@ public class EnrollmentController {
     public ResponseEntity<?> getEnrollment(@PathVariable Long id){
         Enrollment enrollment = enrollmentService.findById(id);
 
-        if (enrollment == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Запись не найдена...");
+//        if (enrollment == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Запись не найдена...");
 
         return ResponseEntity.ok(new EnrollmentDTO(enrollment));
     }
@@ -38,7 +38,7 @@ public class EnrollmentController {
     public ResponseEntity<?> updateEnrollment(@PathVariable Long id, @RequestBody EnrollmentDTO enrollmentDTO){
         Enrollment enrollment = enrollmentService.updateEnrollment(id, enrollmentDTO);
 
-        if (enrollment == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь или Курс не найден...");
+//        if (enrollment == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Пользователь или Курс не найден...");
 
         return ResponseEntity.ok(new EnrollmentDTO(enrollment));
     }
@@ -47,7 +47,7 @@ public class EnrollmentController {
     public ResponseEntity<?> deleteEnrollment(@PathVariable Long id){
         Enrollment enrollment = enrollmentService.findById(id);
 
-        if (enrollment == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Запись не найдена...");
+//        if (enrollment == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Запись не найдена...");
 
         enrollmentService.deleteEnrollment(enrollment);
 

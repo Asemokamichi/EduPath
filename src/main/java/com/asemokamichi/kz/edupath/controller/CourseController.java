@@ -18,7 +18,7 @@ public class CourseController {
     public ResponseEntity<?> createCourse(@RequestBody CourseDTO courseDTO){
         Course course = courseService.createCourse(courseDTO);
 
-        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Инструктор не найден...");
+//        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Инструктор не найден...");
 
         return ResponseEntity.ok(new CourseDTO(course));
     }
@@ -27,7 +27,7 @@ public class CourseController {
     public ResponseEntity<?> getCourse(@PathVariable Long id){
         Course course = courseService.findById(id);
 
-        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Данный курс не найден...");
+//        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Данный курс не найден...");
 
         return ResponseEntity.ok(new CourseDTO(course));
     }
@@ -36,7 +36,7 @@ public class CourseController {
     public ResponseEntity<?> updateCourse(@PathVariable Long id, @RequestBody CourseDTO courseDTO){
         Course course = courseService.updateCourse(id, courseDTO);
 
-        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Курс или Инструктор не найден...");
+//        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Курс или Инструктор не найден...");
 
         return ResponseEntity.ok(course);
     }
@@ -45,7 +45,7 @@ public class CourseController {
     public ResponseEntity<?> deleteCourse(@PathVariable Long id){
         Course course = courseService.findById(id);
 
-        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Курс не найден...");
+//        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Курс не найден...");
 
         courseService.deleteCourse(course);
 
