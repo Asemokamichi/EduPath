@@ -32,7 +32,7 @@ public class LessonController {
         return ResponseEntity.ok(new LessonDTO(lesson));
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateLesson(@PathVariable Long id, @RequestBody LessonDTO lessonDTO){
         Lesson lesson = lessonService.updateLesson(id, lessonDTO);
 
@@ -41,7 +41,7 @@ public class LessonController {
         return ResponseEntity.ok(new LessonDTO(lesson));
     }
 
-    @PostMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteLesson(@PathVariable Long id){
         Lesson lesson = lessonService.finById(id);
 

@@ -2,6 +2,7 @@ package com.asemokamichi.kz.edupath.controller;
 
 import com.asemokamichi.kz.edupath.dto.UserDTO;
 import com.asemokamichi.kz.edupath.entity.User;
+import com.asemokamichi.kz.edupath.exeption.UserAlreadyExists;
 import com.asemokamichi.kz.edupath.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +18,10 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
         if (userService.existsByUsername(userDTO.getUsername())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Пользователь с таким именем уже существует");
+            throw new UserAlreadyExists("Пользователь с именем " + userDTO.getUsername() + " уже существует.");
         }
-        User user = userService.createUser(userDTO);
 
+        User user = userService.createUser(userDTO);
         return ResponseEntity.ok(new UserDTO(user));
     }
 

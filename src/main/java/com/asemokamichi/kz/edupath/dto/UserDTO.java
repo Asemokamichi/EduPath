@@ -2,10 +2,12 @@ package com.asemokamichi.kz.edupath.dto;
 
 import com.asemokamichi.kz.edupath.entity.User;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
+@NoArgsConstructor
 public class UserDTO {
     private Long id;
     private String username;

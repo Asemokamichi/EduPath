@@ -11,24 +11,25 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ExeptionController {
-    @ExceptionHandler
+
+    @ExceptionHandler(InvalidRequest.class)
     public ResponseEntity<ErrorResponse> handleInvalidRequest(InvalidRequest e){
         ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler
+    @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException e){
         ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
 
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<ErrorResponse> handleUserAlreadyExists(UserAlreadyExists e){
+    @ExceptionHandler(UserAlreadyExists.class)
+    public ResponseEntity<ErrorResponse> handleUserAlreadyExists(UserAlreadyExists e) {
         ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
-
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
+
 }
