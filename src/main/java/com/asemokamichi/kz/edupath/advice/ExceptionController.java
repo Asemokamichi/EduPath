@@ -1,16 +1,20 @@
-package com.asemokamichi.kz.edupath.controller;
+package com.asemokamichi.kz.edupath.advice;
 
-import com.asemokamichi.kz.edupath.exeption.ErrorResponse;
-import com.asemokamichi.kz.edupath.exeption.InvalidRequest;
-import com.asemokamichi.kz.edupath.exeption.ResourceNotFoundException;
-import com.asemokamichi.kz.edupath.exeption.UserAlreadyExists;
+import com.asemokamichi.kz.edupath.exceptions.ErrorResponse;
+import com.asemokamichi.kz.edupath.exceptions.InvalidRequest;
+import com.asemokamichi.kz.edupath.exceptions.ResourceNotFoundException;
+import com.asemokamichi.kz.edupath.exceptions.UserAlreadyExists;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@ControllerAdvice
-public class ExeptionController {
+@RestControllerAdvice
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class ExceptionController {
 
     @ExceptionHandler(InvalidRequest.class)
     public ResponseEntity<ErrorResponse> handleInvalidRequest(InvalidRequest e){
