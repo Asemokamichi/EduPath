@@ -1,5 +1,6 @@
 package com.asemokamichi.kz.edupath.dto;
 
+import com.asemokamichi.kz.edupath.Enum.Role;
 import com.asemokamichi.kz.edupath.entity.Enrollment;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,9 @@ public class EnrollmentDTO {
         user_id = enrollment.getUser().getId();
         course_id = enrollment.getCourse().getId();
         enrolled_at = enrollment.getEnrolledAt();
+    }
+
+    public boolean checkValidation() {
+        return enrolled_at != null;
     }
 }

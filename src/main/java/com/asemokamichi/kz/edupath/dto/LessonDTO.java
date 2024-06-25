@@ -1,5 +1,6 @@
 package com.asemokamichi.kz.edupath.dto;
 
+import com.asemokamichi.kz.edupath.Enum.Role;
 import com.asemokamichi.kz.edupath.entity.Lesson;
 import lombok.Data;
 
@@ -15,5 +16,9 @@ public class LessonDTO {
         title = lesson.getTitle();
         content = lesson.getContent();
         course_id = lesson.getCourse().getId();
+    }
+
+    public boolean checkValidation() {
+        return title != null && content != null;
     }
 }

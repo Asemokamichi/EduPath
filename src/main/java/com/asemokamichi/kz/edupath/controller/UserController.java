@@ -5,6 +5,7 @@ import com.asemokamichi.kz.edupath.entity.User;
 import com.asemokamichi.kz.edupath.exceptions.UserAlreadyExists;
 import com.asemokamichi.kz.edupath.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class UserController {
     public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
         User user = userService.createUser(userDTO);
 
-        return ResponseEntity.ok(new UserDTO(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new UserDTO(user));
     }
 
     @GetMapping("/{id}")

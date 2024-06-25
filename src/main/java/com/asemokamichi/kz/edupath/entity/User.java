@@ -52,7 +52,7 @@ public class User {
         this.username = userDTO.getUsername();
         this.password = userDTO.getPassword();
         this.email = userDTO.getEmail();
-        this.role = Role.valueOf(userDTO.getRole());
+        this.role = Role.valueOf(userDTO.getRole().toUpperCase());
     }
 
     public User(Long id, String username, String password, String email, Role role) {

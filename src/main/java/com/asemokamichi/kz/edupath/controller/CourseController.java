@@ -18,16 +18,12 @@ public class CourseController {
     public ResponseEntity<?> createCourse(@RequestBody CourseDTO courseDTO){
         Course course = courseService.createCourse(courseDTO);
 
-//        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Инструктор не найден...");
-
-        return ResponseEntity.ok(new CourseDTO(course));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new CourseDTO(course));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCourse(@PathVariable Long id){
         Course course = courseService.findById(id);
-
-//        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Данный курс не найден...");
 
         return ResponseEntity.ok(new CourseDTO(course));
     }
@@ -36,19 +32,13 @@ public class CourseController {
     public ResponseEntity<?> updateCourse(@PathVariable Long id, @RequestBody CourseDTO courseDTO){
         Course course = courseService.updateCourse(id, courseDTO);
 
-//        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Курс или Инструктор не найден...");
-
         return ResponseEntity.ok(course);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCourse(@PathVariable Long id){
-        Course course = courseService.findById(id);
+        String courseTitle = courseService.deleteCourse(id);
 
-//        if (course == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Курс не найден...");
-
-        courseService.deleteCourse(course);
-
-        return ResponseEntity.ok(String.format("Курс '%s' удален", course.getTitle()));
+        return ResponseEntity.ok(String.format("Курс '%s' удален", courseTitle));
     }
 }

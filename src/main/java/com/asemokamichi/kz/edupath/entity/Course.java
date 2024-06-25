@@ -2,6 +2,7 @@ package com.asemokamichi.kz.edupath.entity;
 
 import com.asemokamichi.kz.edupath.dto.CourseDTO;
 import com.asemokamichi.kz.edupath.dto.UserDTO;
+import com.asemokamichi.kz.edupath.exceptions.InvalidRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
