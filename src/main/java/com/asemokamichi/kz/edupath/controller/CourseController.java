@@ -2,6 +2,7 @@ package com.asemokamichi.kz.edupath.controller;
 
 import com.asemokamichi.kz.edupath.dto.CourseDTO;
 import com.asemokamichi.kz.edupath.entity.Course;
+import com.asemokamichi.kz.edupath.kafka.producer.CourseProducer;
 import com.asemokamichi.kz.edupath.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,9 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    private CourseProducer courseProducer;
+
     @PostMapping
     public ResponseEntity<?> createCourse(@RequestBody CourseDTO courseDTO){
         Course course = courseService.createCourse(courseDTO);
@@ -24,6 +28,9 @@ public class CourseController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getCourse(@PathVariable Long id){
         Course course = courseService.findById(id);
+
+        String message = "Данные о курсе: " + course + " успешно получены";
+        courseProducer.sendMessage(message);
 
         return ResponseEntity.ok(new CourseDTO(course));
     }

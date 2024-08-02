@@ -2,7 +2,7 @@ package com.asemokamichi.kz.edupath.controller;
 
 import com.asemokamichi.kz.edupath.dto.UserDTO;
 import com.asemokamichi.kz.edupath.entity.User;
-import com.asemokamichi.kz.edupath.exceptions.UserAlreadyExists;
+import com.asemokamichi.kz.edupath.kafka.producer.UserProducer;
 import com.asemokamichi.kz.edupath.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +15,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserProducer kafkaProducer;
+
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
         User user = userService.createUser(userDTO);
@@ -25,6 +28,9 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getUser(@PathVariable Long id) {
         User user = userService.findById(id);
+
+        String message = "Данные о пользователе: " + user + " успешно получен";
+        kafkaProducer.sendMessage(message);
 
         return ResponseEntity.ok(new UserDTO(user));
     }

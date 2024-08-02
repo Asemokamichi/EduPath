@@ -43,4 +43,13 @@ public class Course {
         description = courseDTO.getDescription();
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
